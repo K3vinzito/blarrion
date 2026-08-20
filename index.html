@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Una preguntita 👀</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #e7dcff, #cfeaff);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 40px 25px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+
+    .emoji {
+      font-size: 60px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      color: #342b3d;
+      font-size: 38px;
+      margin: 10px 0;
+    }
+
+    p {
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    button {
+      flex: 1;
+      border: none;
+      padding: 15px;
+      border-radius: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .si {
+      background: #ff4f87;
+      color: white;
+    }
+
+    .no {
+      background: #eee5f2;
+      color: #5d5063;
+    }
+
+    .resultado {
+      display: none;
+    }
+
+    .foto {
+      width: 100%;
+      max-height: 330px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      animation: aparecer 0.5s ease;
+    }
+
+    .mensaje {
+      font-size: 27px;
+      color: #3c3042;
+      font-weight: bold;
+      line-height: 1.3;
+    }
+
+    .corazones {
+      font-size: 30px;
+      margin-top: 15px;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <!-- PREGUNTA -->
+    <div id="pregunta">
+
+      <div class="emoji">🥺</div>
+
+      <h1>¿Estás molesta?</h1>
+
+      <p>Responde con sinceridad 👀</p>
+
+      <div class="buttons">
+
+        <button class="si" onclick="respuestaSi()">
+          Sí
+        </button>
+
+        <button class="no" onclick="respuestaNo()">
+          No
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- RESPUESTA -->
+    <div id="resultado" class="resultado">
+
+      <img id="foto" class="foto" src="foto.jpg">
+
+      <div id="mensaje" class="mensaje"></div>
+
+      <div id="corazones" class="corazones"></div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function respuestaSi() {
+
+      document.getElementById("pregunta").style.display = "none";
+      document.getElementById("resultado").style.display = "block";
+
+      document.getElementById("foto").style.display = "block";
+
+      document.getElementById("mensaje").innerHTML =
+        "Te espero a la salida para unos quiños  ";
+
+      document.getElementById("corazones").innerHTML =
+        "👊👊👊";
+    }
+
+
+    function respuestaNo() {
+
+      document.getElementById("pregunta").style.display = "none";
+      document.getElementById("resultado").style.display = "block";
+
+      document.getElementById("foto").style.display = "none";
+
+      document.getElementById("mensaje").innerHTML =
+        "Esa es <br> Estupidita";
+
+      document.getElementById("corazones").innerHTML =
+        ".l.";
+    }
+
+  </script>
+
+</body>
+</html>
