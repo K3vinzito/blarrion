@@ -91,6 +91,16 @@
       animation: aparecer 0.5s ease;
     }
 
+     .gif {
+      width: 100%;
+      max-height: 330px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      animation: aparecer 0.5s ease;
+    }
+
+
     .mensaje {
       font-size: 27px;
       color: #3c3042;
@@ -156,6 +166,7 @@
     <div id="resultado" class="resultado">
 
       <img id="foto" class="foto" src="foto.jpg">
+       <img id="gif" class="gif" src="hazbik-mortal-combat.gif">
 
       <div id="mensaje" class="mensaje"></div>
 
@@ -203,6 +214,7 @@
       document.getElementById("resultado").style.display = "block";
 
       document.getElementById("foto").style.display = "block";
+      document.getElementById("gif").style.display = "block";
 
       document.getElementById("mensaje").innerHTML =
         "Te espero a la salida para unos quiños";
@@ -223,6 +235,7 @@
       document.getElementById("resultado").style.display = "block";
 
       document.getElementById("foto").style.display = "none";
+      document.getElementById("gif").style.display = "none";
 
       document.getElementById("mensaje").innerHTML =
         "Esa es <br> Estupidita";
