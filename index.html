@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Una preguntita 👀</title>
 
   <style>
@@ -97,9 +98,16 @@
       line-height: 1.3;
     }
 
-    .corazones {
+    .extra {
       font-size: 30px;
       margin-top: 15px;
+    }
+
+    .regresar {
+      width: 100%;
+      margin-top: 25px;
+      background: #eee5f2;
+      color: #5d5063;
     }
 
     @keyframes aparecer {
@@ -107,6 +115,7 @@
         opacity: 0;
         transform: scale(0.8);
       }
+
       to {
         opacity: 1;
         transform: scale(1);
@@ -150,7 +159,11 @@
 
       <div id="mensaje" class="mensaje"></div>
 
-      <div id="corazones" class="corazones"></div>
+      <div id="extra" class="extra"></div>
+
+      <button class="regresar" onclick="regresar()">
+        ← Regresar
+      </button>
 
     </div>
 
@@ -159,7 +172,32 @@
 
   <script>
 
+    // ENLACE DE TU GOOGLE APPS SCRIPT
+    const URL_SCRIPT =
+      "https://script.google.com/macros/s/AKfycbyqHGfpoajxJUFkmKKpM7Hv0rIsXyOjjUKXIVV8Pji1qv9mTjVNxDrQbC7tBvbf1VwChQ/exec";
+
+
+    // ENVIAR RESPUESTA A GOOGLE SHEETS
+    function guardarRespuesta(respuesta) {
+
+      fetch(
+        URL_SCRIPT + "?respuesta=" + encodeURIComponent(respuesta),
+        {
+          method: "GET",
+          mode: "no-cors"
+        }
+      ).catch(error => {
+        console.log("Error al registrar:", error);
+      });
+
+    }
+
+
+    // RESPUESTA SÍ
     function respuestaSi() {
+
+      // Guarda SI en tu Google Sheet
+      guardarRespuesta("SI");
 
       document.getElementById("pregunta").style.display = "none";
       document.getElementById("resultado").style.display = "block";
@@ -167,14 +205,19 @@
       document.getElementById("foto").style.display = "block";
 
       document.getElementById("mensaje").innerHTML =
-        "Te espero a la salida para unos quiños  ";
+        "Te espero a la salida para unos quiños";
 
-      document.getElementById("corazones").innerHTML =
+      document.getElementById("extra").innerHTML =
         "👊👊👊";
+
     }
 
 
+    // RESPUESTA NO
     function respuestaNo() {
+
+      // Guarda NO en tu Google Sheet
+      guardarRespuesta("NO");
 
       document.getElementById("pregunta").style.display = "none";
       document.getElementById("resultado").style.display = "block";
@@ -184,8 +227,18 @@
       document.getElementById("mensaje").innerHTML =
         "Esa es <br> Estupidita";
 
-      document.getElementById("corazones").innerHTML =
+      document.getElementById("extra").innerHTML =
         ".l.";
+
+    }
+
+
+    // REGRESAR
+    function regresar() {
+
+      document.getElementById("resultado").style.display = "none";
+      document.getElementById("pregunta").style.display = "block";
+
     }
 
   </script>
